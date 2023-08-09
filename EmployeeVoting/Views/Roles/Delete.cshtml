@@ -1,0 +1,43 @@
+﻿@model EmployeeVoting.Models.Role
+
+@{
+    ViewData["Title"] = "Delete";
+    Department department = (Department)ViewData["department"];
+}
+
+
+<h4 class="fw-bolder h4 text-center">@ViewData["Title"]</h4>
+<center>
+    <hr class="underline" style="width:5em;height:3px;opacity:1">
+</center>
+<div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+        <div class="card rounded-0 shadow">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <form asp-action="Delete">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-0"></div>
+
+                        <div class="form-floating mb-2">
+                            <input name="department_name" disabled value="@department.department_name" class="form-control" />
+                            <label for="department_name" class="control-label">Department</label>
+                        </div>
+
+                        <div class="form-floating mb-2">
+                            <input asp-for="role_name" disabled class="form-control" />
+                            <label asp-for="role_name" class="control-label"></label>
+                            <span asp-validation-for="role_name" class="text-danger"></span>
+                        </div>
+
+                        <input type="hidden" asp-for="role_id" />
+                        <input type="hidden" asp-for="department_id" />
+                        <div class="form-group text-center">
+                            <input type="submit" value="Delete" class="form-control w-auto btn btn-danger" />
+                            <a asp-action="Index" class="form-control w-auto btn btn-secondary"><span class="fa fa-arrow-left"></span> Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

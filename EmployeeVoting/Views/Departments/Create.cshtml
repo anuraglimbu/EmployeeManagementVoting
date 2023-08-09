@@ -1,0 +1,38 @@
+﻿@model EmployeeVoting.Models.Department
+
+@{
+    ViewData["Title"] = "Add Department";
+}
+
+
+<h4 class="fw-bolder h4 text-center">@ViewData["Title"]</h4>
+<center>
+    <hr class="underline" style="width:5em;height:3px;opacity:1">
+</center>
+<div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+        <div class="card rounded-0 shadow">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <form asp-action="Create" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-0"></div>
+
+                        <div class="form-floating mb-2">
+                            <input asp-for="department_name" class="form-control" />
+                            <label asp-for="department_name" class="control-label"></label>
+                            <span asp-validation-for="department_name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" value="Create" class="form-control w-auto btn btn-primary" />
+                            <button type="reset" class="form-control w-auto btn btn-default border">Cancel</button>
+                            <a asp-controller="Departments" asp-action="Index" class="form-control w-auto btn btn-secondary"><span class="fa fa-arrow-left"></span> Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

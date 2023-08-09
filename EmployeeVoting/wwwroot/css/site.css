@@ -1,0 +1,534 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body {
+    background-color: #f9fbfd;
+}
+
+#main {
+    flex: 1;
+}
+
+.text-ellipsis {
+    text-overflow: ellipsis;
+}
+
+.navbar {
+    /*background-color: #84828F !important;*/
+    border-color: #84828F;
+}
+
+.navbar-brand {
+    font-weight: 500;
+    font-size: 30px;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: #3E4C5E !important;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #3E4C5E;
+}
+
+.logo-nav {
+    border-radius: 5px;
+}
+
+    .logo-nav a {
+        padding: 5px;
+        margin: 0;
+    }
+
+.dropdown-menu {
+    width: max-content;
+}
+
+.notification-badge, .mobile-notification-badge {
+    position: absolute;
+    top: 25%;
+}
+
+.mobile-notification-badge {
+    left: 75%;
+}
+
+.notification-dropdown {
+    width: 350px;
+}
+
+.notification-dropdown-body {
+    max-height: 250px;
+    overflow-y: overlay;
+}
+
+.mobile-notification-dropdown-body {
+    max-height: 200px;
+    overflow-y: overlay;
+}
+
+*::-webkit-scrollbar {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 10px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+    *::-webkit-scrollbar-thumb:hover {
+        background-color: #a8bbbf;
+    }
+
+#accountManagementDropdown {
+    padding: 0 8px;
+}
+
+.accountToggle {
+    height: 40px;
+    width: 40px;
+    border: 1px solid;
+    border-color: #737373;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+    .accountToggle img {
+        height: 40px;
+        width: 40px;
+    }
+
+.accountCard text {
+    padding: 5px 0;
+    color: #737373;
+}
+
+.accountCardImage {
+    height: 60px;
+    width: 60px;
+    border: 1px solid;
+    border-color: #737373;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+    .accountCardImage img {
+        height: 60px;
+        width: 60px;
+    }
+
+.form-select:focus, .form-control:focus, .form-check-input:focus {
+    border-color: rgba(83, 98, 113, 0.8) !important;
+    box-shadow: 0 0px 10px rgba(83, 98, 113, 0.6) !important;
+}
+
+.form-switch .form-check-input:checked {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e") !important;
+}
+
+.form-switch .form-check-input:focus {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e")
+}
+
+.hero-content-wrapper h1 {
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 65px;
+}
+
+.outline-text-dark {
+    color: #f9fbfd !important;
+    -webkit-text-stroke: 2px #536271;
+    -webkit-user-select: none;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+.hero-content-wrapper span {
+    -webkit-text-stroke: 0;
+}
+
+.h4 {
+    color: #3E4C5E;
+}
+
+.text-color-primary {
+    color: #3E4C5E;
+}
+
+.text-color-secondary {
+    color: #536271;
+}
+
+.bg-color-primary {
+    background-color: #3E4C5E;
+}
+
+.bg-color-secondary {
+    background-color: #536271;
+}
+
+.btn-primary {
+    background-color: #536271;
+    border-color: #536271;
+}
+
+    .btn-primary:hover {
+        border-color: #536271;
+        background-color: #3E4C5E;
+    }
+
+.form-check-input:checked {
+    background-color: #536271;
+    border-color: #536271;
+}
+
+#forgot-password {
+    color: #737373;
+}
+
+    #forgot-password:hover {
+        color: #3E4C5E;
+    }
+
+.card-header .h4 {
+    color: #fff;
+}
+
+.card-header {
+    background-color: #3E4C5E;
+}
+
+.card-label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.card-text-custom {
+    font-size: 14px;
+}
+
+.user-card-profile .user-card-avatar-holder {
+    width: 100px;
+    height: 100px;
+    aspect-ratio: auto 1/1;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+.user-card-profile .avatar {
+    height: 100px;
+    width: 100px;
+}
+
+.user-card-badge-bg-staff {
+    background-color: #A0D9B4;
+    color: #3E4C5E;
+}
+
+.user-card-badge-bg-admin {
+    background-color: #FFAA8A;
+    color: #3E4C5E;
+}
+
+.user-card-badge-bg-user {
+    background-color: #a8d7e0;
+    color: #3E4C5E;
+}
+
+.table-badge-pending {
+    background-color: #FFAA8A;
+    color: #3E4C5E;
+}
+
+.table-badge-claimed {
+    color: #3E4C5E;
+    background-color: #ffe28c;
+}
+
+.table-badge-reviewing {
+    background-color: #a7daff;
+    color: #3E4C5E;
+}
+
+.table-badge-reviewed {
+    color: #3E4C5E;
+    background-color: #A0D9B4;
+}
+
+.list-avatar {
+    width: 35px;
+    height: 35px;
+}
+
+.list-id:hover {
+    color: #3E4C5E;
+}
+
+.list-links {
+    text-decoration: none;
+}
+
+.dataTables_length select, .dataTables_filter input {
+    border-color: #f0f0f0 !important;
+    background-color: #EEEEEE !important;
+    color: #212529 !important;
+    font-size: 16px !important;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th.dtr-control:before {
+    background-color: #3E4C5E;
+}
+
+table.dataTable thead > tr > th.sorting:before,
+table.dataTable thead > tr > th.sorting_asc:before,
+table.dataTable thead > tr > th.sorting_desc:before,
+table.dataTable thead > tr > th.sorting_asc_disabled:before,
+table.dataTable thead > tr > th.sorting_desc_disabled:before,
+table.dataTable thead > tr > td.sorting:before,
+table.dataTable thead > tr > td.sorting_asc:before,
+table.dataTable thead > tr > td.sorting_desc:before,
+table.dataTable thead > tr > td.sorting_asc_disabled:before,
+table.dataTable thead > tr > td.sorting_desc_disabled:before {
+    right: 1em;
+    bottom: 35%;
+    content: "\2191";
+}
+
+table.dataTable thead > tr > th.sorting:after,
+table.dataTable thead > tr > th.sorting_asc:after,
+table.dataTable thead > tr > th.sorting_desc:after,
+table.dataTable thead > tr > th.sorting_asc_disabled:after,
+table.dataTable thead > tr > th.sorting_desc_disabled:after,
+table.dataTable thead > tr > td.sorting:after,
+table.dataTable thead > tr > td.sorting_asc:after,
+table.dataTable thead > tr > td.sorting_desc:after,
+table.dataTable thead > tr > td.sorting_asc_disabled:after,
+table.dataTable thead > tr > td.sorting_desc_disabled:after {
+    right: 0.5em;
+    top: 45%;
+    content: "\2193";
+}
+
+
+.avatar.icon {
+    width: 56px;
+    min-width: 56px;
+    height: 56px;
+}
+
+.avatar.no-thumbnail {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.details-avatar {
+    width: 56px;
+    height: 56px;
+}
+
+.details-deadline-thumbnail {
+    background-color: #a8d7e0;
+    color: #3E4C5E;
+}
+
+.details-interaction-avatar {
+    width: 35px;
+    height: 35px;
+}
+
+.light-success-bg {
+    background-color: #A0D9B4;
+}
+
+.page-item .page-link {
+    color: #3E4C5E !important;
+}
+
+.page-item.disabled .page-link {
+    background-color: #EEEEEE;
+}
+
+.page-item.active .page-link {
+    background-color: #3E4C5E;
+    border-color: #3E4C5E;
+    color: #fff !important;
+}
+
+.page-item .page-link:focus {
+    border-color: rgba(83, 98, 113, 0.8) !important;
+    box-shadow: 0 0px 10px rgba(83, 98, 113, 0.6) !important;
+}
+
+.file-background-edit {
+    min-width: 50px;
+    min-height: 50px;
+    background-color: #a8d7e0;
+    color: #3E4C5E;
+    font-size: 30px;
+}
+
+.download-background-edit {
+    background-color: #a8d7e0;
+}
+
+.file-background-reviewed {
+    min-width: 50px;
+    min-height: 50px;
+    color: #3E4C5E;
+    font-size: 30px;
+    background-color: #F1C8DB;
+}
+
+.download-background-reviewed {
+    background-color: #F1C8DB;
+}
+
+.user-card-btn-group-btn:hover {
+    color: #fff !important;
+}
+
+.list-group-item {
+    padding: 8px 16px;
+}
+
+.accordion-button {
+    color: #3E4C5E;
+}
+
+    .accordion-button:focus {
+        box-shadow: none;
+        border-color: rgba(0,0,0,.125);
+    }
+
+.accordion-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 15px;
+    cursor: pointer;
+    color: rgba(0,0,0,.55);
+    text-decoration: none;
+    transition: color ease-in-out .2s;
+}
+
+    .accordion-link:hover {
+        text-decoration: underline;
+        color: #3E4C5E;
+    }
+
+.accordion-link-icon {
+    margin-right: 10px;
+}
+
+.accordion-link-text {
+    font-size: 16px;
+}
+
+.nav-pills .nav-link {
+    color: #737373;
+}
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        color: #fff;
+        background-color: #3E4C5E;
+        border-color: #536271;
+    }
+
+#search-query {
+    width: 42%;
+}
+
+#search-date {
+    width: 22%;
+}
+
+    #search-date:not(.has-value)::before {
+        color: #999;
+        content: attr(placeholder) ":\00a0";
+    }
+
+    #search-date:focus::before {
+        content: "" !important;
+    }
+
+#imgPicture {
+    width: 100%;
+    /*max-width: 300px;
+    max-height: 300px;*/
+    height: 100%;
+    aspect-ratio: auto 1/1;
+    border: 1px solid;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+#imgPicker {
+    border: 0px !important;
+    padding: 0px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.underline {
+    color: #3E4C5E;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.truncate-5 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+
+
+footer {
+    border-top: 6px solid #536271;
+    background-color: #3E4C5E;
+    color: #fff;
+    width: 100%;
+}
+
+    footer ul {
+        list-style-type: none;
+        padding-left: 0%;
+    }
+
+        footer ul a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+            footer ul a:hover {
+                color: #fff;
+                text-decoration: underline;
+            }
+
+.btn-download-doc {
+    height: 59px;
+    width: 83px;
+}

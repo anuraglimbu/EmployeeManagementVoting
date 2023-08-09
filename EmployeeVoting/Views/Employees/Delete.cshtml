@@ -1,0 +1,75 @@
+﻿@model EmployeeVoting.Models.Employee
+
+@{
+    ViewData["Title"] = "Delete Employee";
+
+    List<Department> departments = (List<Department>)ViewData["departments"];
+    List<Role> roles = (List<Role>)ViewData["roles"];
+}
+
+
+<h4 class="fw-bolder h4 text-center">@ViewData["Title"]</h4>
+<center>
+    <hr class="underline" style="width:5em;height:3px;opacity:1">
+</center>
+<div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+        <div class="card rounded-0 shadow">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-0"></div>
+                        <div class="form-floating mb-2">
+                            <input asp-for="employee_name" disabled class="form-control" />
+                            <label asp-for="employee_name" class="control-label"></label>
+                            <span asp-validation-for="employee_name" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input asp-for="employee_dob" disabled class="form-control" />
+                            <label asp-for="employee_dob" class="control-label"></label>
+                            <span asp-validation-for="employee_dob" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input asp-for="employee_email" disabled class="form-control" />
+                            <label asp-for="employee_email" class="control-label"></label>
+                            <span asp-validation-for="employee_email" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <select asp-for="role_id" disabled class="form-control">
+                                @{
+                                    var roleName = "Deleted";
+                                    var departName = "Deleted";
+
+                                    if ((roles?.Any(x => x.role_id == Model.role_id)).GetValueOrDefault())
+                                    {
+                                        var result = roles?.First(r => r.role_id == Model.role_id);
+                                        roleName = result?.role_name;
+
+                                        if ((departments?.Any(x => x.department_id == result?.department_id)).GetValueOrDefault())
+                                        {
+                                            departName = departments?.First(d => d.department_id == result?.department_id).department_name;
+                                        }
+                                    }
+
+
+                                    <option value="@Model.role_id">@roleName (Department: @departName)</option>
+                                }
+                            </select>
+                            <label asp-for="role_id" class="control-label"></label>
+                            <span asp-validation-for="role_id" class="text-danger"></span>
+                        </div>
+                    </form>
+
+                    <form asp-action="Delete">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-0"></div>
+                        <input type="hidden" asp-for="employee_id" />
+                        <div class="form-group text-center">
+                            <input type="submit" value="Delete" class="form-control w-auto btn btn-danger" />
+                            <a asp-action="Index" class="form-control w-auto btn btn-secondary"><span class="fa fa-arrow-left"></span> Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

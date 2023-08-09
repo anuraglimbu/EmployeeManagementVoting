@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EmployeeVoting.Models.Vote>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.vote_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.voter_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.candidate_id)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.vote_date)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.voter_id)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.candidate_id)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

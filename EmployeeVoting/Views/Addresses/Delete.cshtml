@@ -1,0 +1,60 @@
+﻿@model EmployeeVoting.Models.Address
+
+@{
+    ViewData["Title"] = "Delete Address";
+
+    List<Employee> employees = (List<Employee>)ViewData["employees"];
+}
+
+
+<h4 class="fw-bolder h4 text-center">@ViewData["Title"]</h4>
+<center>
+    <hr class="underline" style="width:5em;height:3px;opacity:1">
+</center>
+<div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+        <div class="card rounded-0 shadow">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-0"></div>
+                        <div class="form-floating mb-2">
+                            <select asp-for="employee_id" disabled class="form-control">
+                                @{
+                                    var empName = "Deleted";
+
+                                    if ((employees?.Any(x => x.employee_id == Model.employee_id)).GetValueOrDefault())
+                                    {
+                                        var result = employees?.First(r => r.employee_id == Model.employee_id);
+                                        empName = result?.employee_name;
+
+                                        
+                                    }
+
+
+                                    <option value="@Model.employee_id">@empName</option>
+                                }
+                            </select>
+                            <label asp-for="employee_id" class="control-label"></label>
+                            <span asp-validation-for="employee_id" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input asp-for="address_name" disabled class="form-control" />
+                            <label asp-for="address_name" class="control-label"></label>
+                            <span asp-validation-for="address_name" class="text-danger"></span>
+                        </div>
+                    </form>
+
+                    <form asp-action="Delete">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger rounded-0"></div>
+                        <input type="hidden" asp-for="address_id" />
+                        <div class="form-group text-center">
+                            <input type="submit" value="Delete" class="form-control w-auto btn btn-danger" />
+                            <a asp-action="Index" class="form-control w-auto btn btn-secondary"><span class="fa fa-arrow-left"></span> Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

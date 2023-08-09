@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>@ViewData["Title"]</title>
+	<link rel="icon" type="image/x-icon" href="~/favicon.ico">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.2/b-2.3.4/r-2.4.0/sp-2.1.1/datatables.min.css" />
+
+	<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+	<script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+	<div class="content">
+		<div class="clear-fix pt-5 pb-3"></div>
+		<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom border-5  fixed-top">
+			<div class="container">
+				<div class="navbar-header logo-nav">
+					<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EmployeeVoting</a>
+				</div>
+
+				<div class="collapse navbar-collapse flex-row-reverse" id="topNav">
+					<ul class="nav navbar-nav text-light">
+						
+						<li class="nav-item">
+							<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><span class="fas fa-house"></span> Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" asp-area="" asp-controller="Votes" asp-action="Create"><span class="fas fa-handshake"></span> Cast Vote</a>
+						</li>
+
+
+						<li class="nav-item">
+							<a class="nav-link" asp-area="" asp-controller="EmployeeHistories" asp-action="Index"><span class="fas fa-clock-rotate-left"></span> Job history</a>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link  dropdown-toggle" href="#" role="button" id="requestsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+								<span class="fas fa-chart-line"></span> Vote Stats
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="requestsDropdown">
+
+								<li><a asp-area="" asp-controller="Votes" asp-action="Search" class="nav-link dropdown-item"><span class="fas fa-square-poll-vertical"></span> View Votes</a></li>
+
+								<li><a asp-area="" asp-controller="Votes" asp-action="TopThree" class="nav-link dropdown-item"><span class="fas fa-magnifying-glass-chart"></span> Employee Of The Month</a></li>
+
+							</ul>
+						</li>
+						
+
+						<li class="nav-item dropdown">
+							<a class="nav-link  dropdown-toggle" href="#" role="button" id="requestsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+								<span class="fas fa-building-user"></span> Employee
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="requestsDropdown">
+
+								<li><a asp-area="" asp-controller="Employees" asp-action="Index" class="nav-link dropdown-item"><span class="fas fa-users"></span> List Employees</a></li>
+
+								<li><a asp-area="" asp-controller="Employees" asp-action="Create" class="nav-link dropdown-item"><span class="fas fa-user-plus"></span> Add Employee</a></li>
+
+								<li><a asp-area="" asp-controller="Addresses" asp-action="Index" class="nav-link dropdown-item"><span class="fas fa-address-book"></span> View Addresses</a></li>
+
+								<li><a asp-area="" asp-controller="Addresses" asp-action="Create" class="nav-link dropdown-item"><span class="fas fa-location-crosshairs"></span> Add Address</a></li>
+
+								<li><a asp-area="" asp-controller="Contacts" asp-action="Index" class="nav-link dropdown-item"><span class="fas fa-mobile-screen-button"></span> List Contacts</a></li>
+
+								<li><a asp-area="" asp-controller="Contacts" asp-action="Create" class="nav-link dropdown-item"><span class="fas fa-user-pen"></span> Add Contact</a></li>
+
+							</ul>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link  dropdown-toggle" href="#" role="button" id="requestsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+								<span class="fas fa-people-roof"></span> Role
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="requestsDropdown">
+
+								<li><a asp-area="" asp-controller="Roles" asp-action="Index" class="nav-link dropdown-item"><span class="fas fa-people-group"></span> List Roles</a></li>
+
+								<li><a asp-area="" asp-controller="Roles" asp-action="Create" class="nav-link dropdown-item"><span class="fas fa-person-circle-plus"></span> Add Role</a></li>
+
+							</ul>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link  dropdown-toggle" href="#" role="button" id="requestsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+								<span class="fas fa-building"></span> Department
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="requestsDropdown">
+
+								<li><a asp-area="" asp-controller="Departments" asp-action="Index" class="nav-link dropdown-item"><span class="fas fa-building-circle-arrow-right"></span> List Departments</a></li>
+
+								<li><a asp-area="" asp-controller="Departments" asp-action="Create" class="nav-link dropdown-item"><span class="fas fa-building-circle-check"></span> Add Department</a></li>
+
+							</ul>
+						</li>
+					</ul>
+
+					<button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container mt-3" id="main">
+
+			@RenderBody()
+
+			@if (!(ViewData["Title"] == "Home Page"))
+			{
+				<hr class="underline" style="height:2px;opacity:1">
+			}
+
+		</div>
+
+		<footer class="pt-4 pb-4 footer">
+			<div class="container pt-4">
+				<div class="row">
+					<div class="col-md-6 col-sm-12 col-12 pb-3">
+						<h5>ABOUT<br>EMPLOYEE VOTING</h5>
+						<p>
+							EmployeeVoting is an in house solution for employee data keeping,
+							with an aim to provide an easy and accessible way of voting to the employees for employee of the month.
+							At EmployeeVoting, you can just choose your candidate to vote for.
+						</p>
+					</div>
+					<div class="col-md-2 col-sm-6 col-6 pb-3">
+						<h5>QUICK LINKS</h5>
+						<ul>
+							<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+							<li><a asp-area="" asp-controller="Departments" asp-action="Index">Departments</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3 pb-3 logo">
+						<h5 class="logo-footer">EmployeeVoting</h5>
+						<p>Where Each and Every Vote Counts!</p>
+					</div>
+				</div>
+				<div class="w-100 text-center">
+					&copy; 2023 - EmployeeVoting
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.2/b-2.3.4/r-2.4.0/sp-2.1.1/datatables.min.js"></script>
+	<script>
+		// project data table
+		$(document).ready(function () {
+			$('#myTable')
+				.addClass('nowrap')
+				.dataTable({
+					responsive: true,
+				});
+			$('#myRequestsTable').show();
+
+			$('#myTable1')
+				.dataTable({
+					responsive: true,
+				});
+			$('#myRequestsTable1').show();
+
+			$('#myTable2')
+				.dataTable({
+					responsive: true,
+				});
+
+
+			$('#myRequestsTable2').show();
+			$(window).trigger('resize');
+		});
+	</script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

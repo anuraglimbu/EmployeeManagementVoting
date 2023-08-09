@@ -1,0 +1,69 @@
+﻿@model IEnumerable<EmployeeVoting.Models.Department>
+
+@{
+    ViewData["Title"] = "Department List";
+}
+
+<h4 class="fw-bolder h4 text-center">@ViewData["Title"]</h4>
+<center>
+    <hr class="underline" style="width:5em;height:3px;opacity:1">
+</center>
+
+<center>
+    <a class="btn btn-primary form-control w-auto mb-3" href="/Departments/Create"><span class="fa fa-plus"></span> Add a Department</a>
+</center>
+
+<div class="row justify-content-center">
+    <div class="col-lg-12">
+        @if (TempData["StatusMessage"] != null)
+        {
+            string message = (string)TempData["StatusMessage"];
+            var statusMessageClass = message.StartsWith("Error") ? "danger" : "success";
+            <div class="alert alert-@statusMessageClass alert-dismissible rounded-0" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                @message
+            </div>
+        }
+
+        <div class="card rounded-0">
+            <div class="col-lg-12">
+                <div class="card-body">
+                    <table id="myTable" class="table table-hover align-middle mb-0" style="width:100% !important;" role="grid">
+
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Department Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <a asp-action="Details" asp-route-id="@item.department_id" class="fw-bold list-id text-color-secondary">@item.department_id</a>
+                                    </td>
+                                    <td>
+                                        @item.department_name
+                                    </td>
+
+                                    <td class="dt-center">
+                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                            <a asp-action="Details" asp-route-id="@item.department_id" class="btn user-card-btn-group-btn form-auto btn-outline-secondary text-color-primary" title="View Department Detail"><i class="far fa-eye"></i></a>
+
+                                            <a asp-action="Edit" asp-route-id="@item.department_id" class="btn user-card-btn-group-btn form-auto btn-outline-secondary text-success" title="Edit Department"><i class="fa fa-edit"></i></a>
+
+                                            <a asp-action="Delete" asp-route-id="@item.department_id" class="btn user-card-btn-group-btn form-auto btn-outline-secondary text-danger" title="Delete Department"><i class="fa fa-trash"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

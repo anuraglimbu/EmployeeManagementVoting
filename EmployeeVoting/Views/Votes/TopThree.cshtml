@@ -1,0 +1,163 @@
+﻿@model EmployeeVoting.Models.Vote
+
+@{
+    ViewData["Title"] = "Employee Of The Month";
+    List<Vote> votes = (List<Vote>)ViewData["results"];
+    List<Employee> employees = (List<Employee>)ViewData["employees"];
+
+    List<Department> departments = (List<Department>)ViewData["departments"];
+    List<Role> roles = (List<Role>)ViewData["roles"];
+
+    List<int> employeeVotes = new List<int>();
+
+    Dictionary<int, int> employeeIdCount = new Dictionary<int, int>();
+
+    if(votes != null)
+    {
+        foreach (var employee in employees)
+        {
+            var count = votes.Where(v => v.candidate_id == employee.employee_id).Count();
+
+            if (count == 0) continue;
+
+            employeeIdCount.Add(employee.employee_id, count);
+        }
+
+
+    }
+
+    var sortedDict = from entry in employeeIdCount orderby entry.Value descending select entry;
+
+    sortedDict.ToDictionary(pair => pair.Key, pair => pair.Value);
+
+    //TODO Make TopThree Work
+
+    /*if(votes != null)
+    {
+        
+        foreach(var employee in employees)
+        {
+            employeeVotes.Add(employee.Id, votes.Where(v => v.candidateId == employee.Id).Count());
+        } 
+
+        
+    }*/
+
+    //var mySorteddict = from entry in employeeVotes orderby entry.Value descending select entry;
+}
+
+
+<h4 class="fw-bolder h4 text-center">@ViewData["Title"]</h4>
+<center>
+    <hr class="underline" style="width:5em;height:3px;opacity:1">
+</center>
+
+<center>
+    <form asp-action="TopThree" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="vote_id" />
+        <div class="input-group mb-3">
+            <input asp-for="vote_date" type="month" class="form-control" />
+            
+            <button class="btn btn-primary w-auto" type="submit"><span class="fa fa-binoculars"></span> View Selected Month's Data</button>
+        </div>
+    </form>
+</center>
+
+
+
+<div class="row justify-content-center">
+    <div class="col-lg-12">
+        @if (TempData["StatusMessage"] != null)
+        {
+            string message = (string)TempData["StatusMessage"];
+            var statusMessageClass = message.StartsWith("Error") ? "danger" : "success";
+            <div class="alert alert-@statusMessageClass alert-dismissible rounded-0" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                @message
+            </div>
+        }
+
+        <div class="card rounded-0">
+            <div class="col-lg-12">
+                <div class="card-body">
+                    <table id="myTable" class="table table-hover align-middle mb-0" style="width:100% !important;" role="grid">
+
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th>Candidate Name</th>
+                                <th>Votes</th>
+                                <th>Candidate Department</th>
+                                <th>Candidate Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        @if (votes != null)
+                        {
+                            
+                            var i = 1;
+                            
+                            @foreach (var item in sortedDict)
+                            {
+
+                                var candidateName = "Deleted";
+                                DateTime? candidateDOB = null;
+                                var candidateRoleName = "Deleted";
+                                var candidateDepartName = "Deleted";
+
+
+                                if ((employees?.Any(e => e.employee_id == item.Key)).GetValueOrDefault())
+                                {
+                                    var result = employees?.First(e => e.employee_id == item.Key);
+
+                                    candidateName = result.employee_name;
+                                    candidateDOB = result.employee_dob;
+
+                                    if ((roles?.Any(x => x.role_id == result.role_id)).GetValueOrDefault())
+                                    {
+                                        var roleResult = roles?.First(r => r.role_id == result.role_id);
+                                        candidateRoleName = roleResult?.role_name;
+
+                                        if ((departments?.Any(x => x.department_id == roleResult?.department_id)).GetValueOrDefault())
+                                        {
+                                            candidateDepartName = departments?.First(d => d.department_id == roleResult?.department_id).department_name;
+                                        }
+                                    }
+                                }
+
+                                <tr>
+                                    <td>
+                                        <span class="fw-bold list-id text-color-secondary">#@i</span>
+                                    </td>
+                                    <td>
+                                        <a asp-controller="Employees" asp-action="Details" asp-route-id="@item.Key" class="fw-bold list-id text-color-secondary">@candidateName</a>
+                                    </td>
+                                    <td>
+                                        @item.Value
+                                    </td>
+                                    <td>
+                                        @candidateDepartName
+                                    </td>
+                                    <td>
+                                        @candidateRoleName
+                                    </td>
+                                </tr>
+
+                                if (i == 3) break;
+                                i++;
+                            }
+                        }
+                    </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
